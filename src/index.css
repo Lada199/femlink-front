@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+* {
+  font-family: "Inter", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+body {
+  overscroll-behavior: none;
+  background: #0a0a0a;
+}
+@keyframes transition {
+  from{opacity: .7;}
+  to{opacity: 1;}
+  
+}
+.textarea{
+  border-radius:10px;
+  border: none;
+  padding: 20px ;
+  font-size: 18px;
+  resize: none;
+  width: 100%;
+  color:#fff;
+  font-weight: 300;
+  transition: .3s all linear;
+  background:#292929;
+  height: 150px
+}
+.textarea:focus{
+  outline: none;
+  border: 1px solid #ffffff56;
+}
+
+

@@ -1,0 +1,67 @@
+button {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    transition: .2s all linear;
+}
+
+
+
+.btn {
+    background-color: #fff;
+    color: #000000;
+    cursor: pointer;
+    height: 60px;
+    font-weight: 300;
+    font-size: 20px;
+}
+.btn:hover{
+    background-color:#ffffffa2;
+}
+
+.border {
+    border-radius: 10px;
+}
+.btn__follow{
+  
+  margin: 0 auto;
+  width: 100%;
+}
+
+button a,
+.btn-link {
+
+    color: #ffffffa2;
+
+    cursor: pointer;
+    padding: 20px 0;
+
+    position: relative;
+
+    font-weight: 300;
+
+    font-size: 20px;
+
+    transition: .2s all linear;
+
+
+}
+
+.btn-link:before {
+    content: '';
+    bottom: 0;
+    position: absolute;
+    transition: .2s all linear;
+    height: 1px;
+    width: 0%;
+    background-color: #fff;
+}
+
+.btn-link:hover:before {
+    width: 100%;
+}
+
+button a:hover,
+.btn-link:hover {
+    color: #ffffff;
+}

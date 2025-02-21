@@ -1,0 +1,21 @@
+.arrow{
+    cursor: pointer;
+    
+}
+.delete__arrow{
+    height: 100%;
+    display: flex;
+    align-items:center;
+
+}
+.delete__arrow:hover  path{
+    fill: #fff;
+} 
+.arrow path{
+    transition: .2s all linear;
+
+}
+.arrow path:hover {
+    fill: #fff;
+
+}

@@ -1,0 +1,31 @@
+.form__comments {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}
+
+.textarea__comments {
+    width: 70%;
+    border-radius: 10px;
+    border: none;
+    padding: 18px;
+    font-size: 18px;
+    resize: none;
+ height: 60px;
+    
+    color: #fff;
+    font-weight: 300;
+    transition: .3s all linear;
+    background: #292929;
+}
+
+.textarea__comments:focus {
+    outline: none;
+    border: 1px solid #ffffff56;
+}
+
+.form__comments .btn {
+    width: 30%;
+}

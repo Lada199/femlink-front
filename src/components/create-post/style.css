@@ -1,0 +1,43 @@
+.form__post{
+    margin: 50px auto 0;
+    width: 50%;
+ 
+    padding: 30px;
+    border-radius:20px;
+}
+.hidden-input {
+    display: none; /* Прячем стандартный инпут */
+  }
+  
+  .file-upload {
+    display: flex ;
+    align-items:center;
+    gap: 15px;
+    cursor: pointer;
+  }
+  .file-upload span{
+    color:#fff;
+  }
+  
+  .upload-btn {
+ 
+    height: 60px;
+    display: flex;
+   align-items: center;
+    border-radius: 10px;
+    border: none;
+    padding: 0 20px;
+    font-size: 18px;
+    color: #757575;
+    font-weight: 300;
+    transition: .3s all linear;
+    background: #292929;
+    transition: 0.3s;
+  }
+  .upload-btn:first-child{
+    color: #757575;
+  }
+  
+  .upload-btn:hover {
+    background-color: #1c1c1c;
+  }

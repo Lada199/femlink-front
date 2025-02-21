@@ -1,0 +1,28 @@
+.input{
+    height: 60px;
+    border-radius:10px;
+    border: none;
+    padding: 0 20px;
+    font-size: 18px;
+    width: 100%;
+    color:#fff;
+    font-weight: 300;
+    transition: .3s all linear;
+    background:#292929
+ 
+}
+.input__group{
+    width: 100%;
+}
+.input__error-message{
+    margin-top: 3px;
+    font-weight: 300;
+    color:#f50e0e96;
+}
+.error{
+    border: .5px solid #f50e0e96;
+}
+.input:focus{
+    outline: none;
+    border: 1px solid #ffffff56;
+}

@@ -1,0 +1,17 @@
+.logo__wrapper{
+    width: 100%;
+    animation: anim .4s linear;
+
+}
+.logo__wrapper img{
+    width: 100%;
+}
+@keyframes anim{
+    from{
+        transform: translateY(-100%);
+
+    }
+    to{
+        transform: translateY(0%);
+    }
+}

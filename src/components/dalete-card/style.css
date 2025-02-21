@@ -1,0 +1,13 @@
+.delete-card{
+    cursor: pointer;
+
+}
+.delete-card path{
+    transition: .2s all linear;
+}
+.delete-card:hover  path{
+    fill: #fff;
+} 
+.delete-card path:hover{
+    fill: #fff;
+}

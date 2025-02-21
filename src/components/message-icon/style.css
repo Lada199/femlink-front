@@ -1,0 +1,21 @@
+.message__icon{
+    cursor: pointer;
+    
+}
+.message__icon{
+    height: 100%;
+    display: flex;
+    align-items:center;
+
+}
+.message__icon:hover  path{
+    fill: #fff;
+} 
+.message path{
+    transition: .2s all linear;
+
+}
+.message path:hover {
+    fill: #fff;
+
+}

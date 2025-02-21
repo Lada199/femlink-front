@@ -1,0 +1,18 @@
+.close__icon{
+    cursor: pointer;
+
+}
+.close{
+
+}
+.close__icon:hover  path{
+    fill: #fff;
+} 
+.close path{
+    transition: .2s all linear;
+
+}
+.close path:hover {
+    fill: #fff;
+
+}

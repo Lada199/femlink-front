@@ -1,0 +1,18 @@
+.posts__wrapper{
+    height: calc(100vh - 205px);
+    overflow-y: scroll;
+    padding-bottom: 50px;
+    scrollbar-width: none;
+}
+.posts__inner{
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.Not__found__post{
+    color: #ffffffa2;
+    text-align: center;
+    font-weight: 300;
+    width: 100%;
+}
