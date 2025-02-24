@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDeletePostMutation, useGetPostByIdQuery, useLazyGetAllPostQuery, useLazyGetPostByIdQuery } from '../../app/services/postApi';
+import { useDeletePostMutation, useLazyGetAllPostQuery, useLazyGetPostByIdQuery } from '../../app/services/postApi';
 import { useDeleteCommentMutation } from '../../app/services/commentsApi';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -20,6 +20,8 @@ import { useFollowUserMutation, useUnFollowUserMutation } from '../../app/servic
 import { Button } from '../button';
 import { Follows, Post, User } from '../../app/types';
 import { useDeleteSavedPostMutation, useSavePostMutation } from '../../app/services/saveApi';
+import { SaveIcon } from '../save-icon';
+import { SavedIcon } from '../saved-icon';
 type Props = {
   avatarUrl: string,
   fullName: string,
@@ -174,15 +176,38 @@ export const Card: React.FC<Props> = ({
         <Arrow />
         {
           cardFor !== 'current-post' ? <Link to={`/posts/${id}`}>
-            <div className='commentsCount__wrapper'>
+            <div className='icon__wrapper'>
               <MessageIcon />
               {commentsCount}
             </div>
-          </Link> : <div className='commentsCount__wrapper'>
+          </Link> : <div className='icon__wrapper'>
             <MessageIcon />
             {commentsCount}
           </div>
         }
+        <div className='save__wrapper'>
+          {
+            authorId !== currentUser?.id ?
+              (
+                <div className='icon__wrapper' onClick={handleSavePost}>
+                  {isSavedPost ? <SavedIcon /> : <SaveIcon />}
+
+                </div>
+
+
+              ) : (
+                <div className='icon__wrapper' >
+                  <SaveIcon />
+
+                </div>
+
+
+              )
+
+          }
+          {savedCount}
+
+        </div>
         {
           authorId === currentUser?.id && (
             <div onClick={handleDelete}>
@@ -193,26 +218,7 @@ export const Card: React.FC<Props> = ({
           )
         }
 
-        <div>
-          {
-            authorId !== currentUser?.id &&
-            (
-              isSavedPost ? (
-                <div className="" onClick={handleSavePost}>
-                  unsave
-                </div>
-              ) : (
 
-                <div className="" onClick={handleSavePost}>
-                  save
-                </div>
-
-              )
-            )
-          }
-          {savedCount}
-
-        </div>
       </div>
 
 

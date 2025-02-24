@@ -63,7 +63,7 @@ export const CurrentPost = () => {
         places={places}
         city={city}
         followers={data?.followers ?? []} 
-        // savedBy={data?.savedBy ?? []}
+      
   currentUserId={currentUser?.id ?? ''}
 
       />
