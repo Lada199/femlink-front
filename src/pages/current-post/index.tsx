@@ -14,7 +14,7 @@ import { selectCurrent } from '../../features/user/userSlice';
 
 
 export const CurrentPost = () => {
-  const  params = useParams<{ id: string }>();
+  const params = useParams<{ id: string }>();
   const { data } = useGetPostByIdQuery(params?.id ?? '')
   const currentUser = useSelector(selectCurrent)
 
@@ -62,34 +62,33 @@ export const CurrentPost = () => {
         dateOfStart={dateOfStart}
         places={places}
         city={city}
-        followers={data?.followers ?? []} 
-      
-  currentUserId={currentUser?.id ?? ''}
+        followers={data?.followers ?? []}
+        currentUserId={currentUser?.id ?? ''}
 
       />
- 
-  
+
+
       <div>
       </div>
       <div className="comments__wrapper">
-        <CreateComments/>
+        <CreateComments />
         <div className="comments__items">
-        {
-  data.comments ? 
-  [...data.comments].reverse().map((comment) => (
-    <CardComments
-      cardFor='comment'
-      key={comment.id}
-      avatarUrl={comment.user.avatarUrl ?? ''}
-      content={comment.content}
-      fullName={comment.user.fullName ?? ''}
-      authorId={comment.userId}
-      commentId={comment.id}
-      id={id}
-      createdAt={comment.createdAt ?? ''}
-    />
-  )) : null
-}
+          {
+            data.comments ?
+              [...data.comments].reverse().map((comment) => (
+                <CardComments
+                  cardFor='comment'
+                  key={comment.id}
+                  avatarUrl={comment.user.avatarUrl ?? ''}
+                  content={comment.content}
+                  fullName={comment.user.fullName ?? ''}
+                  authorId={comment.userId}
+                  commentId={comment.id}
+                  id={id}
+                  createdAt={comment.createdAt ?? ''}
+                />
+              )) : null
+          }
         </div>
 
       </div>

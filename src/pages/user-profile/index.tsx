@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { resetUser, selectCurrent } from '../../features/user/userSlice'
-import { useCurrentQuery, useGetUserByIdQuery, useLazyCurrentQuery, useLazyGetUserByIdQuery } from '../../app/services/userApi'
+import {useGetUserByIdQuery, useLazyCurrentQuery, useLazyGetUserByIdQuery } from '../../app/services/userApi'
 import { BASE_URL } from '../../constants'
 import { Card } from '../../components/card'
 import ReactMarkdown from 'react-markdown';
@@ -18,7 +18,7 @@ export const UserProfile = () => {
   const [getUserByIdQuery] = useLazyGetUserByIdQuery()
   const [currentQuery] = useLazyCurrentQuery()
   const [isOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'userEvents' | 'subscribedEvents'>('userEvents');
+  const [activeTab, setActiveTab] = useState<'userEvents' | 'subscribedEvents' | 'savedEvents'>('userEvents');
 
 
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ export const UserProfile = () => {
     setIsModalOpen(false);
 
   }
-  const handleTabSwitch = (tab: 'userEvents' | 'subscribedEvents') => {
+  const handleTabSwitch = (tab: 'userEvents' | 'subscribedEvents' | 'savedEvents') => {
     setActiveTab(tab);
   };
 
@@ -92,15 +92,23 @@ export const UserProfile = () => {
         <div onClick={() => handleTabSwitch('subscribedEvents')} className={`tab_btn ${activeTab === 'subscribedEvents' ? 'active' : ''}`}>
           Joined the events
         </div>
+        {
+          currentUser?.id !== id ? '' : <div onClick={() => handleTabSwitch('savedEvents')} className={`tab_btn ${activeTab === 'savedEvents' ? 'active' : ''}`}>
+            Saved Events
+          </div>
+        }
+
       </div>
       <div className="user__bottom">
         {activeTab === 'userEvents' && data.posts && data.posts.length > 0 ? (
           [...data.posts].reverse().map((post) => (
             <Card
               key={post.id}
+              isSavedPost={post.isSavedPost}
               avatarUrl={post.author?.avatarUrl ?? ''}
               content={post.content}
               fullName={''}
+              savedCount={post.savedBy?.length ?? 0}
               commentsCount={post.comments?.length ?? 0}
               authorId={post.authorId}
               id={post.id}
@@ -122,6 +130,7 @@ export const UserProfile = () => {
             return (
               <Card
                 key={post.id}
+                isSavedPost={post.isSavedPost}
                 avatarUrl={post.author?.avatarUrl ?? ''}
                 content={post.content}
                 fullName={post.author?.fullName ?? ''}
@@ -138,6 +147,34 @@ export const UserProfile = () => {
                 places={post.places}
                 city={post.city}
                 onDelete={refetch}
+                savedCount={post.savedBy?.length ?? 0}
+              />
+            )
+          })
+        ) : activeTab === 'savedEvents' && data.savedPost && data.savedPost.length > 0 ? (
+          data.savedPost.map((savedPost) => {
+            const post = savedPost.savedPost;
+            return (
+              <Card
+                key={post.id}
+                isSavedPost={post.isSavedPost}
+                avatarUrl={post.author?.avatarUrl ?? ''}
+                content={post.content}
+                fullName={post.author?.fullName ?? ''}
+                commentsCount={post.comments?.length ?? 0}
+                authorId={post.authorId}
+                id={post.id}
+                createdAt={post.createdAt}
+                followersCount={post.followers?.length ?? 0}
+                cardFor="post"
+                imageUrl={post.imageUrl}
+                location={post.location}
+                title={post.title}
+                dateOfStart={post.dateOfStart}
+                places={post.places}
+                city={post.city}
+                onDelete={refetch}
+                savedCount={post.savedBy?.length ?? 0}
               />
             )
           })
