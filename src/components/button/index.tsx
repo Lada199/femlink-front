@@ -6,23 +6,22 @@ type Props = {
     className?: string;
     onClick?: React.MouseEventHandler
     type?: 'button' | 'submit' | 'reset';
- 
+
 }
 
-export const Button:  React.FC<Props> = ({
+export const Button: React.FC<Props> = ({
     children,
     className,
     onClick,
-
     type
 }) => {
-  return (
-   <button
-    className={className}
-    onClick={onClick}
-    type={type}
-    >
-         {children}
-     </button>
-  )
+    return (
+        <button
+            className={className}
+            onClick={onClick}
+            type={type}
+        >
+            {children}
+        </button>
+    )
 }

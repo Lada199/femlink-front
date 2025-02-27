@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { NavButton } from '../nav-button'
 import './style.css'
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectCurrent, selectIsAuthenticated } from '../../features/user/userSlice';
 import { Button } from '../button';
@@ -23,9 +22,7 @@ export const Header = () => {
   }
 
   const onClose = () => {
-
     setIsModalOpen(false);
-
   }
 
 
@@ -51,7 +48,6 @@ export const Header = () => {
   }
 
   return (
-
     <div className="wrapper">
       {isFullPostPage && (
         <NavButton href='/'>
@@ -61,7 +57,6 @@ export const Header = () => {
       {isAddpostPage ? '' : <NavButton href='add-event'>
         Аdd Event
       </NavButton>}
-
       {!isProfilePage && (<NavButton href={`users/${id}`}>
         My profil
       </NavButton>)}
@@ -70,7 +65,6 @@ export const Header = () => {
           <Button className='btn-link' onClick={isOpen} >Log out </Button>
         )
       }
-
       <LogOutModal isOpen={isOpenModal} onClose={onClose} handleLogout={handleLogout} />
 
     </div>

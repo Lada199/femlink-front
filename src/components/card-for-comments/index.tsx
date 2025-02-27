@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import ReactMarkdown from 'react-markdown';
 import { Link, useParams } from 'react-router-dom';
-import { useDeleteCommentMutation} from '../../app/services/commentsApi';
+import { useDeleteCommentMutation } from '../../app/services/commentsApi';
 import { useSelector } from 'react-redux';
 import { selectCurrent } from '../../features/user/userSlice';
 import { hasErrorField } from '../../utils/has-error-field';
@@ -23,7 +23,7 @@ type Props = {
     content: string,
     commentId?: string,
     commentsCount?: number,
-    createdAt?:Date,
+    createdAt?: Date,
     id?: string,
     cardFor: 'comment',
     onDelete?: () => void;
@@ -47,9 +47,7 @@ export const CardComments: React.FC<Props> = (
     const [error, setError] = useState('')
     const params = useParams<{ id: string }>();
     const [getPostById] = useLazyGetPostByIdQuery()
-
     const currentUser = useSelector(selectCurrent)
-
 
     const refetchPosts = async () => {
         await getPostById(id).unwrap()
@@ -99,18 +97,14 @@ export const CardComments: React.FC<Props> = (
                                 : `${fullName}`
                         }
                     </Link>
-                    <div    className={`card__content-text  ${authorId === currentUser?.id && 'left'}`} >
-                       
-
-                    <ReactMarkdown
-                 
-                        remarkPlugins={[remarkGfm, remarkBreaks]}>
-                        {content}
-                    </ReactMarkdown>
-                    <div className="card__create">
-                    {createdAt && formatToClientDate(createdAt)}
-
-                    </div>
+                    <div className={`card__content-text  ${authorId === currentUser?.id && 'left'}`} >
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm, remarkBreaks]}>
+                            {content}
+                        </ReactMarkdown>
+                        <div className="card__create">
+                            {createdAt && formatToClientDate(createdAt)}
+                        </div>
                     </div>
                 </div>
                 {

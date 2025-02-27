@@ -24,9 +24,9 @@ export const CreatePost = (
     const navigate = useNavigate();
 
 
-  
 
-    
+
+
 
 
     const {
@@ -114,9 +114,6 @@ export const CreatePost = (
                     <span className="upload-btn">Upload Image</span>
                     {fileName && <span className="file-name">{fileName}</span>}
                 </label>
-
-
-
                 <Input
                     control={control}
                     name='dateOfStart'
@@ -135,8 +132,6 @@ export const CreatePost = (
                         required: 'Required field',
                     }}
                 />
-
-
                 <Input
                     control={control}
                     name='places'
@@ -153,19 +148,14 @@ export const CreatePost = (
                         required: 'Required field',
                     }}
                     render={({ field, fieldState }) => (
-                  
-
-                            <textarea
-                                className={`textarea ${fieldState.error ? "error" : ''}`}
-                                {...field}
-                                placeholder="Event Description"
-                            />
-                          
-                      
+                        <textarea
+                            className={`textarea ${fieldState.error ? "error" : ''}`}
+                            {...field}
+                            placeholder="Event Description"
+                        />
                     )}
                 />
                 <Button className='btn border' type='submit'>Add event  </Button>
-
             </form>
         </div>
     )

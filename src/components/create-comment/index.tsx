@@ -7,7 +7,7 @@ import { Button } from '../button'
 import './style.css'
 
 
-export const CreateComments  = () => {
+export const CreateComments = () => {
     const { id } = useParams<{ id: string }>()
     const [createComment] = useCreateCommentMutation()
     const [getPostById] = useLazyGetPostByIdQuery()
@@ -44,24 +44,19 @@ export const CreateComments  = () => {
                 }}
                 render={({ field }) => (
                     <textarea
-
                         {...field}
                         placeholder='Add your comment '
                         className='textarea__comments'
                     />
                 )}
             />
-
             {error && <ErrorMessage error={error} />}
             <Button
-
                 className='btn border'
-
                 type='submit'
             >
                 Add comment
             </Button>
-
         </form>
     )
 }

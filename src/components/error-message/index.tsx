@@ -7,5 +7,5 @@ export const ErrorMessage = (
         error: string
     }
 ) => {
-  return error && <p className="error__text">{error}</p>
+    return error && <p className="error__text">{error}</p>
 }

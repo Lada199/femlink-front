@@ -22,6 +22,7 @@ import { Follows, Post, User } from '../../app/types';
 import { useDeleteSavedPostMutation, useSavePostMutation } from '../../app/services/saveApi';
 import { SaveIcon } from '../save-icon';
 import { SavedIcon } from '../saved-icon';
+import { ConfirmModal } from '../сonfirmation-modal';
 type Props = {
   avatarUrl: string,
   fullName: string,
@@ -86,6 +87,16 @@ export const Card: React.FC<Props> = ({
   const [unFollowUser] = useUnFollowUserMutation()
   const [savePost] = useSavePostMutation()
   const [deleteSavedPost] = useDeleteSavedPostMutation()
+  const [isOpenModal, setIsModalOpen] = useState(false);
+
+
+  const isOpen = () => {
+    setIsModalOpen(true)
+  }
+
+  const onClose = () => {
+    setIsModalOpen(false);
+  }
 
 
   const refetchPosts = async () => {
@@ -210,7 +221,7 @@ export const Card: React.FC<Props> = ({
         </div>
         {
           authorId === currentUser?.id && (
-            <div onClick={handleDelete}>
+            <div onClick={isOpen}>
               {
                 deletePostStatus.isLoading || deleteCommentStatus.isLoading ? <Loader /> : <DeleteCard />
               }
@@ -299,6 +310,7 @@ export const Card: React.FC<Props> = ({
           </div>)
         }
       </div>
+      <ConfirmModal isOpen={isOpenModal} onClose={onClose} handleDelete={handleDelete} />
     </div>
   )
 }
