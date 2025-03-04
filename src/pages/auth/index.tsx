@@ -5,17 +5,31 @@ import hearts from '../../img/hearts.png'
 import { Container } from '../../components/container'
 import { Login } from '../../features/user/login'
 import { Register } from '../../features/user/register'
-import video from '../../img/6010397_4k_Alcohol_3840x2160 (1).mp4'
+import { Toast } from '../../components/toast'
+
 
 export const Auth = () => {
   const [selected, setSelected] = useState(true)
+  const [successMessage, setSuccessMessage] = useState<boolean>(false);
   const changeSelected = () => {
     setSelected(!selected)
   };
+
+  const handleSuccessfulRegister = () => {
+    setSelected(true); 
+    setSuccessMessage(true);
+
+    setTimeout(() => {
+      setSuccessMessage(false);
+    }, 2000);
+  };
+
   return (
     <Container>
       <div className='auth__wrapper'>
         <Logo />
+        <Toast successMessage={successMessage}>Registration successful! 🎉</Toast>
+        
         <div className="auth__content">
           <div className="auth__form">
             <div className="auth__title">Welcome, <span>Beautiful</span>! </div>
@@ -30,7 +44,8 @@ export const Auth = () => {
 
               <Login />
             </div> : <div className="register">
-              <Register />
+              <Register onRegisterSuccess={handleSuccessfulRegister} />
+    
             </div>}
            
           </div>

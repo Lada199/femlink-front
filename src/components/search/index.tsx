@@ -1,5 +1,6 @@
 import React from 'react'
 import './style.css'
+import { SearchIcon } from '../search-icon';
 type Props = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -19,8 +20,12 @@ export const Search: React.FC<Props> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="search__input input "
+        className="search__input input padLeft"
       />
+      <div className="search__icon-wrapper">
+
+      <SearchIcon/>
+      </div>
 
 
     </div>

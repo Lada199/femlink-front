@@ -1,0 +1,23 @@
+.toast__wrapper {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background-color: #ca7288;
+    color: rgb(6, 6, 6);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    font-weight: 300;
+    transition: transform .3s ease-in-out;
+}
+
+.toast__wrapper.hide {
+    transform: translateX(-50%) translateY(-100px);
+}
+
+.toast__wrapper.show {
+    transform: translateX(-50%) translateY(100px);
+}

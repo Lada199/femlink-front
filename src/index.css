@@ -33,4 +33,21 @@ body {
   border: 1px solid #ffffff56;
 }
 
+.icon__wrapper{
+  cursor: pointer;
+
+}
+
+.icon__wrapper:hover  path{
+  fill: #fff;
+} 
+.icon path{
+  transition: .2s all linear;
+
+}
+.icon path:hover {
+  fill: #fff;
+
+}
+
 

@@ -12,7 +12,7 @@ import './style.css'
 import { formatToClientDate } from '../../utils/format-to-client-date';
 import { BASE_URL } from '../../constants';
 import { hasErrorField } from '../../utils/has-error-field';
-import { DeleteCard } from '../dalete-card';
+import { DeleteIcon } from '../dalete-icon';
 import { Arrow } from '../arrow';
 import { Loader } from '../loader';
 import { MessageIcon } from '../message-icon';
@@ -223,7 +223,7 @@ export const Card: React.FC<Props> = ({
           authorId === currentUser?.id && (
             <div onClick={isOpen}>
               {
-                deletePostStatus.isLoading || deleteCommentStatus.isLoading ? <Loader /> : <DeleteCard />
+                deletePostStatus.isLoading || deleteCommentStatus.isLoading ? <Loader /> : <DeleteIcon />
               }
             </div>
           )
@@ -283,7 +283,7 @@ export const Card: React.FC<Props> = ({
             ''
         }
         <div className={`card__info ${cardFor === 'current-post' ? '' : 'word-noWrap'} `}>
-          <span>Count of vacant places for girls:</span>  {followersCount !== 0 && `${places - followersCount} /`}   {places}
+          <span>Available places:</span>  {followersCount !== 0 ? `${places - followersCount}`  :  `${places}` }  <span>/ {places}</span> 
           {followers?.length > 0 ? (
             <ul className='follower__items'>
               {followers.map(({ follower }) => (

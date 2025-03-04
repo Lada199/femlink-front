@@ -1,5 +1,16 @@
 .search__wpapper{
     width: 50%;
-    padding-bottom: 40px;
     margin: 0 auto;
+    margin-bottom: 40px;
+    position: relative;
+    cursor: pointer;
+}
+.search__icon-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+.padLeft{
+    padding-left: 40px;
 }

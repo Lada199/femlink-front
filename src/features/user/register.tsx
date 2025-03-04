@@ -11,12 +11,16 @@ import { Loader } from '../../components/loader';
 type Register = {
     fullName: string,
     email: string,
-    password: string
+    password: string,
+    
+}
+type Props ={
+    onRegisterSuccess: () => void;
 }
 
 
-export const Register = ({
-
+export const Register: React.FC<Props> = ({
+    onRegisterSuccess
 }) => {
     const {
         handleSubmit,
@@ -36,6 +40,7 @@ export const Register = ({
     const onSubmit = async (data: Register) => {
         try {
             await register(data).unwrap()
+            onRegisterSuccess();
         } catch (error) {
             if (hasErrorField(error)) {
                 setError(error.data.error)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Arrow } from '../arrow';
 import { Loader } from '../loader';
-import { DeleteCard } from '../dalete-card';
+import { DeleteIcon } from '../dalete-icon';
 import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import ReactMarkdown from 'react-markdown';
@@ -115,7 +115,7 @@ export const CardComments: React.FC<Props> = (
                             {
                                 deleteCommentStatus.isLoading ?
                                     <Loader />
-                                    : <DeleteCard />
+                                    : <DeleteIcon />
                             }
                         </div>
                     )
