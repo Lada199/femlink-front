@@ -16,7 +16,7 @@
 .form__title{
     font-size: 20px;
     font-weight: 300;
-    color:#fff;
+    color:var(--primary-text-color);
     text-align: center;
 
 }

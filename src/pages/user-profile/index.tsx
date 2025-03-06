@@ -20,20 +20,15 @@ export const UserProfile = () => {
   const [isOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'userEvents' | 'subscribedEvents' | 'savedEvents'>('userEvents');
 
-
   const dispatch = useDispatch()
 
-
   useEffect(() => () => {
-
     dispatch(resetUser())
   }, [])
 
 
   const onClose = () => {
-
     setIsModalOpen(false);
-
   }
   const handleTabSwitch = (tab: 'userEvents' | 'subscribedEvents' | 'savedEvents') => {
     setActiveTab(tab);
@@ -45,8 +40,6 @@ export const UserProfile = () => {
         await getUserByIdQuery(id)
         await currentQuery()
         onClose()
-
-
       }
     } catch (error) {
       console.log(error)
@@ -71,7 +64,6 @@ export const UserProfile = () => {
             </div>
             <div className="user__bio-events"><span>{data.posts.length}</span> events</div>
             <div className='user__edit' onClick={() => setIsModalOpen(true)} >
-
               {
                 currentUser?.id !== id ? '' : 'Edit'
               }
@@ -81,23 +73,21 @@ export const UserProfile = () => {
             <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
               {data.bio ?? `No description`}
             </ReactMarkdown>
-
           </div>
         </div>
       </div>
       <div className="user__tabs">
-        <div onClick={() => handleTabSwitch('userEvents')} className={`tab_btn ${activeTab === 'userEvents' ? 'active' : ''}`}>
+        <button onClick={() => handleTabSwitch('userEvents')} className={`tab__btn ${activeTab === 'userEvents' ? 'active' : ''}`}>
           My Events
-        </div>
-        <div onClick={() => handleTabSwitch('subscribedEvents')} className={`tab_btn ${activeTab === 'subscribedEvents' ? 'active' : ''}`}>
+        </button>
+        <button onClick={() => handleTabSwitch('subscribedEvents')} className={`tab__btn ${activeTab === 'subscribedEvents' ? 'active' : ''}`}>
           Joined the events
-        </div>
+        </button>
         {
-          currentUser?.id !== id ? '' : <div onClick={() => handleTabSwitch('savedEvents')} className={`tab_btn ${activeTab === 'savedEvents' ? 'active' : ''}`}>
+          currentUser?.id !== id ? '' : <button onClick={() => handleTabSwitch('savedEvents')} className={`tab__btn ${activeTab === 'savedEvents' ? 'active' : ''}`}>
             Saved Events
-          </div>
+          </button>
         }
-
       </div>
       <div className="user__bottom">
         {activeTab === 'userEvents' && data.posts && data.posts.length > 0 ? (

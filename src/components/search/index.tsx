@@ -23,11 +23,8 @@ export const Search: React.FC<Props> = ({
         className="search__input input padLeft"
       />
       <div className="search__icon-wrapper">
-
-      <SearchIcon/>
+        <SearchIcon />
       </div>
-
-
     </div>
   )
 }

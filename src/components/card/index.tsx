@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { useDeletePostMutation, useLazyGetAllPostQuery, useLazyGetPostByIdQuery } from '../../app/services/postApi';
-import { useDeleteCommentMutation } from '../../app/services/commentsApi';
+import { Follows, Post, User } from '../../app/types';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDeletePostMutation, useLazyGetAllPostQuery, useLazyGetPostByIdQuery } from '../../app/services/postApi';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
-
-import { useSelector } from 'react-redux';
+import { useDeleteCommentMutation } from '../../app/services/commentsApi';
 import { selectCurrent } from '../../features/user/userSlice';
-import './style.css'
 import { formatToClientDate } from '../../utils/format-to-client-date';
 import { BASE_URL } from '../../constants';
 import { hasErrorField } from '../../utils/has-error-field';
@@ -18,11 +17,13 @@ import { Loader } from '../loader';
 import { MessageIcon } from '../message-icon';
 import { useFollowUserMutation, useUnFollowUserMutation } from '../../app/services/followApi';
 import { Button } from '../button';
-import { Follows, Post, User } from '../../app/types';
 import { useDeleteSavedPostMutation, useSavePostMutation } from '../../app/services/saveApi';
 import { SaveIcon } from '../save-icon';
 import { SavedIcon } from '../saved-icon';
 import { ConfirmModal } from '../сonfirmation-modal';
+import { CardInfo } from '../card-info';
+import './style.css'
+
 type Props = {
   avatarUrl: string,
   fullName: string,
@@ -182,108 +183,98 @@ export const Card: React.FC<Props> = ({
 
   return (
     <div className={`card ${cardFor === 'current-post' ? 'card__fullWidth' : ''} `}>
-
       <div className='info-event__wrapper'>
         <Arrow />
         {
           cardFor !== 'current-post' ? <Link to={`/posts/${id}`}>
-            <div className='icon__wrapper'>
+            <button className='icon__wrapper'>
               <MessageIcon />
               {commentsCount}
-            </div>
-          </Link> : <div className='icon__wrapper'>
+            </button>
+          </Link> : <button className='icon__wrapper'>
             <MessageIcon />
             {commentsCount}
-          </div>
+          </button>
         }
         <div className='save__wrapper'>
           {
             authorId !== currentUser?.id ?
               (
-                <div className='icon__wrapper' onClick={handleSavePost}>
+                <button className='icon__wrapper' onClick={handleSavePost}>
                   {isSavedPost ? <SavedIcon /> : <SaveIcon />}
 
-                </div>
-
-
+                </button>
               ) : (
-                <div className='icon__wrapper' >
+                <button className='icon__wrapper' >
                   <SaveIcon />
-
-                </div>
-
-
+                </button>
               )
-
           }
           {savedCount}
-
         </div>
         {
           authorId === currentUser?.id && (
-            <div onClick={isOpen}>
+            <button onClick={isOpen}>
               {
                 deletePostStatus.isLoading || deleteCommentStatus.isLoading ? <Loader /> : <DeleteIcon />
               }
-            </div>
+            </button>
           )
         }
-
-
       </div>
 
 
       <div className="card__img">
-        <img src={`${BASE_URL}${imageUrl}`} alt="" />
+        <img src={`${BASE_URL}${imageUrl}`} alt={title} />
         {
           cardFor === 'current-post' && authorId !== currentUser?.id && (
             followers?.some(f => f.follower.id === currentUserId) ? (
               <Button className="btn__follow btn border" onClick={handleFollow}>
-                Unfollow
+               Leave the event
               </Button>
             ) : (
               followersCount < places ? (
                 <Button className="btn__follow btn border" onClick={handleFollow}>
-                  Follow
+                  Join an event 
                 </Button>
               ) : (
-                <div className='notication'>No available spots</div>
+                <div className='notification'>No available spots</div>
               )
             )
           )
         }
-
-
       </div>
       <div className="card__content">
         <div className={`card__title ${cardFor === 'current-post' ? '' : 'word-noWrap'} `} >{title}</div>
         {
           cardFor === 'current-post' && (
-            <div className="card__info margin font-weight markdown">
-              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>{content}</ReactMarkdown>
-            </div>
+            <CardInfo className='margin font-weight markdown'>
+               <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>{content}</ReactMarkdown>
+            </CardInfo>
           )
         }
-        <div className={`card__info ${cardFor === 'current-post' ? '' : 'word-noWrap'} `}>
+        <CardInfo cardFor={cardFor}>
           <span>Date & Time:</span> {formatToClientDate(dateOfStart)}
-        </div>
-        <div className={`card__info ${cardFor === 'current-post' ? '' : 'word-noWrap'} `}>
+        </CardInfo>
+
+        <CardInfo cardFor={cardFor}>
           <span>City:</span> {city}
-        </div>
-        <div className={`card__info ${cardFor === 'current-post' ? '' : 'word-noWrap'} `}>
+        </CardInfo>
+
+        <CardInfo cardFor={cardFor}>
           <span>Location:</span>  {location}
-        </div>
+        </CardInfo>
         {
           fullName ?
-            <div className={`card__info ${cardFor === 'current-post' ? '' : 'word-noWrap'} `}>
+            <CardInfo cardFor={cardFor}>
               <span>Author:</span>
               <Link to={`/users/${authorId}`}>{fullName}</Link>
-            </div>
+            </CardInfo>
             :
             ''
         }
-        <div className={`card__info ${cardFor === 'current-post' ? '' : 'word-noWrap'} `}>
-          <span>Available places:</span>  {followersCount !== 0 ? `${places - followersCount}`  :  `${places}` }  <span>/ {places}</span> 
+        <CardInfo cardFor={cardFor}>
+          <span>Available places:</span>  {followersCount !== 0 ? `${places - followersCount}` : `${places}`}  <span>/ {places}</span>
           {followers?.length > 0 ? (
             <ul className='follower__items'>
               {followers.map(({ follower }) => (
@@ -303,7 +294,8 @@ export const Card: React.FC<Props> = ({
           ) : (
             ''
           )}
-        </div>
+        </CardInfo>
+
         {
           cardFor !== 'current-post' && (<div className='card__btn'>
             <Link to={`/posts/${id}`}>Learn more</Link>

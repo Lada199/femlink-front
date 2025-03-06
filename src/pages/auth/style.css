@@ -34,7 +34,7 @@
     font-weight: 300;
     font-size: 20px;
     text-align: center;
-    color:#ffffffa2;
+    color:var(--primary-elem-color);
    
 }
 .text span{

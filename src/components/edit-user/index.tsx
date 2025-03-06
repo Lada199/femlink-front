@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { User } from '../../app/types';
-import { useCurrentQuery, useGetUserByIdQuery, useUpdateUserMutation } from '../../app/services/userApi';
+import { useUpdateUserMutation } from '../../app/services/userApi';
 import { useParams } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { Input } from '../input';
@@ -74,10 +74,6 @@ export const EditUser: React.FC<Props> = ({
         }
 
     }
-
-
-
-
 
     if (!isOpen) return null
     return (

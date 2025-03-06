@@ -8,7 +8,7 @@ button {
 
 
 .btn {
-    background-color: #fff;
+    background-color: var(--primary-text-color);
     color: #000000;
     cursor: pointer;
     height: 60px;
@@ -16,7 +16,7 @@ button {
     font-size: 20px;
 }
 .btn:hover{
-    background-color:#ffffffa2;
+    background-color:var(--primary-elem-color);
 }
 
 .border {
@@ -31,7 +31,7 @@ button {
 button a,
 .btn-link {
 
-    color: #ffffffa2;
+    color: var(--primary-elem-color);
 
     cursor: pointer;
     padding: 20px 0;
@@ -54,7 +54,7 @@ button a,
     transition: .2s all linear;
     height: 1px;
     width: 0%;
-    background-color: #fff;
+    background-color: var(--primary-text-color);
 }
 
 .btn-link:hover:before {

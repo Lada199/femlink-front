@@ -24,8 +24,8 @@ export const Login = () => {
         mode: 'onChange',
         reValidateMode: 'onBlur',
         defaultValues: {
-            email: 'lada@ukr.net',
-            password: 'lada'
+            email: '',
+            password: ''
         }
     })
 
@@ -71,7 +71,7 @@ export const Login = () => {
                     }}
                 />
                 <ErrorMessage error={error} />
-                {isLoading ?    <Loader/> :  <Button className='btn border' type='submit'> Sign in  </Button>  }
+                {isLoading ? <Loader /> : <Button className='btn border' type='submit'> Sign in  </Button>}
 
             </form>
         </div>

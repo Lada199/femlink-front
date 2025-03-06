@@ -1,4 +1,4 @@
 .btn a{
-    /* color:#fff; */
+    /* color:var(--primary-text-color); */
     text-decoration: none;
 }

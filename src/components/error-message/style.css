@@ -1,5 +1,5 @@
 .error__text{
     text-align: center;
-    color: #fff;
+    color: var(--primary-text-color);
     font-weight: 300;
 }

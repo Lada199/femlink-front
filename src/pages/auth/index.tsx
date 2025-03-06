@@ -16,7 +16,7 @@ export const Auth = () => {
   };
 
   const handleSuccessfulRegister = () => {
-    setSelected(true); 
+    setSelected(true);
     setSuccessMessage(true);
 
     setTimeout(() => {
@@ -29,25 +29,21 @@ export const Auth = () => {
       <div className='auth__wrapper'>
         <Logo />
         <Toast successMessage={successMessage}>Registration successful! 🎉</Toast>
-        
         <div className="auth__content">
           <div className="auth__form">
             <div className="auth__title">Welcome, <span>Beautiful</span>! </div>
-          {selected ?
+            {selected ?
               <div className="text">
-               First time here? <span onClick={changeSelected}>Sign up </span> </div>
+                First time here? <span onClick={changeSelected}>Sign up </span> </div>
               :
               <div className="text" >
                 Do you already have an account?  <span onClick={changeSelected}>Sign in</span>  </div>
             }
             {selected ? <div className="login">
-
               <Login />
             </div> : <div className="register">
               <Register onRegisterSuccess={handleSuccessfulRegister} />
-    
             </div>}
-           
           </div>
         </div>
         <div className="auth__bottom">

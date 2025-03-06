@@ -1,5 +1,5 @@
 .user{
-    color: #fff;
+    color: var(--primary-text-color);
 
 }
 .user__top{
@@ -10,7 +10,7 @@
 }
 .user__avatar{
     border-radius:100%;
-    border: 1px solid #ffffffa2;
+    border: 1px solid var(--primary-elem-color);
     padding: 5px;
     width: 200px;
     height: 200px;
@@ -45,11 +45,11 @@
 
 }
 .user__bio-sity{
-    color:#ffffffa2;
+    color:var(--primary-elem-color);
 
 }
 .user__bio-events{
-    color:#ffffffa2;
+    color:var(--primary-elem-color);
     
 
 }
@@ -76,23 +76,24 @@
 }
 .user__edit{
     cursor: pointer;
-    color:#ffffffa2;
+    color:var(--primary-elem-color);
     transition: .2s all;
 }
 .user__edit:hover{
-    color:#fff;
+    color:var(--primary-text-color);
 }
-.tab_btn{
-    color:#ffffffa2;
+.tab__btn{
+    color:var(--primary-elem-color);
     cursor: pointer;
+    font-size: 16px;
     font-weight: 300;
     transition: .2s all linear;
 }
-.tab_btn:hover{
-    color:#fff;
+.tab__btn:hover{
+    color:var(--primary-text-color);
 }
-.tab_btn.active{
-    color:#fff;
+.tab__btn.active{
+    color:var(--primary-text-color);
 }
 .user__tabs{
     display: flex;

@@ -12,9 +12,9 @@ type Register = {
     fullName: string,
     email: string,
     password: string,
-    
+
 }
-type Props ={
+type Props = {
     onRegisterSuccess: () => void;
 }
 
@@ -30,7 +30,7 @@ export const Register: React.FC<Props> = ({
         mode: 'onChange',
         reValidateMode: 'onBlur',
         defaultValues: {
-            email: 'test@ukr.net',
+            email: '',
             password: '',
             fullName: ''
         }
@@ -78,8 +78,8 @@ export const Register: React.FC<Props> = ({
                     }}
                 />
                 <ErrorMessage error={error} />
-                {isLoading ?    <Loader/> :          <Button className='btn border' type='submit'>Sign up</Button>  }
-        
+                {isLoading ? <Loader /> : <Button className='btn border' type='submit'>Sign up</Button>}
+
             </form>
         </div>
     )

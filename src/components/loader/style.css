@@ -8,7 +8,7 @@
         display: inline-block;
         position: relative;
         border: 1px solid;
-        border-color: #ffffffa2 #ffffffa2 transparent transparent;
+        border-color: var(--primary-elem-color) var(--primary-elem-color) transparent transparent;
         box-sizing: border-box;
         animation: rotation 1s linear infinite;
       }
@@ -23,7 +23,7 @@
         bottom: 0;
         margin: auto;
         border: 1px solid;
-        border-color: transparent transparent #fff #fff;
+        border-color: transparent transparent #fff var(--primary-text-color);
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -34,7 +34,7 @@
       .loader::before {
         width: 12px;
         height: 12px;
-        border-color: #ffffffa2 #ffffffa2 transparent transparent;
+        border-color: var(--primary-elem-color) var(--primary-elem-color) transparent transparent;
         animation: rotation 1.5s linear infinite;
       }
           

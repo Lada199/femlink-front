@@ -1,5 +1,5 @@
 .form__comments {
-    color: #fff;
+    color: var(--primary-text-color);
     display: flex;
     width: 100%;
     align-items: center;
@@ -15,15 +15,15 @@
     resize: none;
  height: 60px;
     
-    color: #fff;
+    color: var(--primary-text-color);
     font-weight: 300;
     transition: .3s all linear;
-    background: #292929;
+    background: var(--secondary-color);;
 }
 
 .textarea__comments:focus {
     outline: none;
-    border: 1px solid #ffffff56;
+    border: 1px solid var(--primary-focus-color);
 }
 
 .form__comments .btn {

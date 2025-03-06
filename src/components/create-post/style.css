@@ -16,7 +16,7 @@
     cursor: pointer;
   }
   .file-upload span{
-    color:#fff;
+    color:var(--primary-text-color);
   }
   
   .upload-btn {
@@ -31,7 +31,7 @@
     color: #757575;
     font-weight: 300;
     transition: .3s all linear;
-    background: #292929;
+    background: var(--secondary-color);;
     transition: 0.3s;
   }
   .upload-btn:first-child{

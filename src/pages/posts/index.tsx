@@ -5,12 +5,16 @@ import { Post } from '../../app/types'
 import { useState } from 'react';
 import './style.css'
 import { Search } from '../../components/search';
+import { useSelector } from 'react-redux';
+import { selectCurrent } from '../../features/user/userSlice';
 
 
 
 export const Posts = () => {
   const { data } = useGetAllPostQuery() as { data?: Post[] };
   const [search, setSearch] = useState('');
+  const currentUser = useSelector(selectCurrent)
+  console.log(currentUser)
 
 
   const filteredPosts = data?.filter((post) =>

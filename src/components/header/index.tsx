@@ -5,8 +5,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectCurrent, selectIsAuthenticated } from '../../features/user/userSlice';
 import { Button } from '../button';
-import { GoBAck } from '../go-back';
-import { getUserById } from '../../app/services/userApi';
 import { LogOutModal } from '../logout-modal';
 
 

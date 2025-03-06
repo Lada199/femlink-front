@@ -13,7 +13,7 @@ export const Layout = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(!isAuthenticated){
+    if (!isAuthenticated) {
       navigate('/auth')
     }
   }, [])
@@ -25,9 +25,7 @@ export const Layout = () => {
             <Header />
           </div>
           <div className="layout__bottom">
-         
             <Outlet />
-           
           </div>
         </div>
       </Container>
