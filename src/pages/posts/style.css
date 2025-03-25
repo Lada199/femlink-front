@@ -1,6 +1,6 @@
 .posts__wrapper{
     height: calc(100vh - 205px);
-    overflow-y: scroll;
+    
     padding-bottom: 50px;
     scrollbar-width: none;
 }

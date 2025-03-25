@@ -5,8 +5,6 @@ button {
     transition: .2s all linear;
 }
 
-
-
 .btn {
     background-color: var(--primary-text-color);
     color: #000000;
@@ -47,19 +45,7 @@ button a,
 
 }
 
-.btn-link:before {
-    content: '';
-    bottom: 0;
-    position: absolute;
-    transition: .2s all linear;
-    height: 1px;
-    width: 0%;
-    background-color: var(--primary-text-color);
-}
 
-.btn-link:hover:before {
-    width: 100%;
-}
 
 button a:hover,
 .btn-link:hover {

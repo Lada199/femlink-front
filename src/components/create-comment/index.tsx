@@ -45,6 +45,7 @@ export const CreateComments = () => {
                 render={({ field }) => (
                     <textarea
                         {...field}
+                        rows={5}
                         placeholder='Add your comment '
                         className='textarea__comments'
                     />

@@ -1,7 +1,9 @@
+import ReactDOM from "react-dom";
 import { Button } from "../button";
 import { CloseIcon } from "../close-icon";
 import { Modal } from "../modal";
 import './style.css'
+import { Title } from "../title";
 
 type Props = {
   isOpen: boolean;
@@ -15,10 +17,10 @@ export const LogOutModal: React.FC<Props> = ({
   handleLogout
 }) => {
   if (!isOpen) return null;
-  return (
+  return ReactDOM.createPortal(
     <Modal>
       <div className="modal__header">
-        <div className="form__title">Do you really want to exit?</div>
+        <Title>Do you really want to exit?</Title>
         <div className="modal__close" onClick={onClose}>
           <CloseIcon />
         </div>
@@ -33,6 +35,7 @@ export const LogOutModal: React.FC<Props> = ({
           </Button>
         </div>
       </div>
-    </Modal>
+    </Modal>,
+     document.getElementById("modal-root") as HTMLElement
   )
 }

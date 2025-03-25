@@ -1,0 +1,6 @@
+.layout__top{
+    background: #0a0a0a;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}

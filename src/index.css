@@ -8,13 +8,6 @@
   --secondary-text-color: #a6a6a6;
   --primary-elem-color: #ffffffa2;
   --primary-focus-color: #ffffff56;
-  /* --primary-color: #EFEDE7;
-  --secondary-color: #BED4D2;
-  --btn-card-color: #9CB4B2;
-  --primary-text-color: #fff;
-  --secondary-text-color: #A7A298;
-  --primary-elem-color: #CAC7BF;
-  --primary-focus-color: #7A9592; */
 
 }
 
@@ -29,7 +22,7 @@
 body {
   overscroll-behavior: none;
   background: #0a0a0a;
-  /* background: #7A9592; */
+ 
 }
 
 @keyframes transition {

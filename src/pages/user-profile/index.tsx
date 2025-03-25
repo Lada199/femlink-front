@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { resetUser, selectCurrent } from '../../features/user/userSlice'
-import {useGetUserByIdQuery, useLazyCurrentQuery, useLazyGetUserByIdQuery } from '../../app/services/userApi'
+import { useGetUserByIdQuery, useLazyCurrentQuery, useLazyGetUserByIdQuery } from '../../app/services/userApi'
 import { BASE_URL } from '../../constants'
 import { Card } from '../../components/card'
 import ReactMarkdown from 'react-markdown';
@@ -10,6 +10,7 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import './style.css'
 import { EditUser } from '../../components/edit-user'
+import { NotDataText } from '../../components/not-data-text'
 
 export const UserProfile = () => {
   const { id } = useParams<{ id: string }>()
@@ -50,6 +51,8 @@ export const UserProfile = () => {
     return null
   }
 
+
+
   return (
     <div className='user'>
       <div className="user__top">
@@ -70,9 +73,13 @@ export const UserProfile = () => {
             </div>
           </div>
           <div className="user__bio-bottom">
-            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
-              {data.bio ?? `No description`}
-            </ReactMarkdown>
+            {data.bio ? (
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+                {data.bio}
+              </ReactMarkdown>
+            ) : (
+              <NotDataText>No description</NotDataText>
+            )}
           </div>
         </div>
       </div>
@@ -90,14 +97,14 @@ export const UserProfile = () => {
         }
       </div>
       <div className="user__bottom">
-        {activeTab === 'userEvents' && data.posts && data.posts.length > 0 ? (
+        {activeTab === "userEvents" && data.posts && data.posts.length > 0 ? (
           [...data.posts].reverse().map((post) => (
             <Card
               key={post.id}
               isSavedPost={post.isSavedPost}
-              avatarUrl={post.author?.avatarUrl ?? ''}
+              avatarUrl={post.author?.avatarUrl ?? ""}
               content={post.content}
-              fullName={''}
+              fullName={""}
               savedCount={post.savedBy?.length ?? 0}
               commentsCount={post.comments?.length ?? 0}
               authorId={post.authorId}
@@ -114,16 +121,18 @@ export const UserProfile = () => {
               onDelete={refetch}
             />
           ))
-        ) : activeTab === 'subscribedEvents' && data.following && data.following.length > 0 ? (
+        ) : activeTab === "userEvents" ? (
+          <NotDataText>No posts created yet...</NotDataText>
+        ) : activeTab === "subscribedEvents" && data.following && data.following.length > 0 ? (
           data.following.map((following) => {
             const post = following.following;
             return (
               <Card
                 key={post.id}
                 isSavedPost={post.isSavedPost}
-                avatarUrl={post.author?.avatarUrl ?? ''}
+                avatarUrl={post.author?.avatarUrl ?? ""}
                 content={post.content}
-                fullName={post.author?.fullName ?? ''}
+                fullName={post.author?.fullName ?? ""}
                 commentsCount={post.comments?.length ?? 0}
                 authorId={post.authorId}
                 id={post.id}
@@ -139,18 +148,20 @@ export const UserProfile = () => {
                 onDelete={refetch}
                 savedCount={post.savedBy?.length ?? 0}
               />
-            )
+            );
           })
-        ) : activeTab === 'savedEvents' && data.savedPost && data.savedPost.length > 0 ? (
+        ) : activeTab === "subscribedEvents" ? (
+          <NotDataText>No subscribed posts yet...</NotDataText>
+        ) : activeTab === "savedEvents" && data.savedPost && data.savedPost.length > 0 ? (
           data.savedPost.map((savedPost) => {
             const post = savedPost.savedPost;
             return (
               <Card
                 key={post.id}
                 isSavedPost={post.isSavedPost}
-                avatarUrl={post.author?.avatarUrl ?? ''}
+                avatarUrl={post.author?.avatarUrl ?? ""}
                 content={post.content}
-                fullName={post.author?.fullName ?? ''}
+                fullName={post.author?.fullName ?? ""}
                 commentsCount={post.comments?.length ?? 0}
                 authorId={post.authorId}
                 id={post.id}
@@ -166,10 +177,12 @@ export const UserProfile = () => {
                 onDelete={refetch}
                 savedCount={post.savedBy?.length ?? 0}
               />
-            )
+            );
           })
+        ) : activeTab === "savedEvents" ? (
+          <NotDataText>No saved posts yet...</NotDataText>
         ) : (
-          <p>No posts available...</p>
+          <NotDataText>No posts available...</NotDataText>
         )}
 
       </div>

@@ -7,6 +7,7 @@ import './style.css'
 import { Search } from '../../components/search';
 import { useSelector } from 'react-redux';
 import { selectCurrent } from '../../features/user/userSlice';
+import { NotDataText } from '../../components/not-data-text';
 
 
 
@@ -60,7 +61,10 @@ export const Posts = () => {
               )
             ))
           ) : (
-            <p className='Not__found__post'>Posts not found...</p>
+            <NotDataText>
+              Posts not found...
+            </NotDataText>
+
           )}
         </div>
       </div>

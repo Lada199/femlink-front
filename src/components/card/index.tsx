@@ -53,7 +53,6 @@ type Props = {
 }
 
 export const Card: React.FC<Props> = ({
-  avatarUrl = '',
   fullName = '',
   authorId = '',
   content = '',
@@ -63,11 +62,9 @@ export const Card: React.FC<Props> = ({
   dateOfStart,
   city = '',
   places = 0,
-  commentId = '',
   commentsCount = 0,
   followersCount = 0,
   savedCount = 0,
-  createdAt,
   id = '',
   onDelete,
   isSavedPost = false,
@@ -222,8 +219,6 @@ export const Card: React.FC<Props> = ({
           )
         }
       </div>
-
-
       <div className="card__img">
         <img src={`${BASE_URL}${imageUrl}`} alt={title} />
         {
@@ -268,7 +263,7 @@ export const Card: React.FC<Props> = ({
           fullName ?
             <CardInfo cardFor={cardFor}>
               <span>Author:</span>
-              <Link to={`/users/${authorId}`}>{fullName}</Link>
+              <Link to={`/users/${authorId}`}> {fullName}</Link>
             </CardInfo>
             :
             ''

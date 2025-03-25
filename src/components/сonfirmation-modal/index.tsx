@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Modal } from '../modal'
 import { CloseIcon } from '../close-icon'
 import { Button } from '../button'
+import { Title } from '../title';
 type Props = {
     isOpen: boolean;
     onClose: () => void;
@@ -18,7 +19,7 @@ export const ConfirmModal: React.FC<Props> = ({
     return ReactDOM.createPortal(
         <Modal>
             <div className="modal__header">
-                <div className="form__title">Do you really want to delete this event?</div>
+                <Title>Do you really want to delete this event?</Title>
                 <div className="modal__close" onClick={onClose}>
                     <CloseIcon />
                 </div>

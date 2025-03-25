@@ -10,6 +10,7 @@ import { hasErrorField } from '../../utils/has-error-field';
 import './style.css'
 import { CloseIcon } from '../close-icon';
 import { Modal } from '../modal';
+import { Title } from '../title';
 
 
 
@@ -80,7 +81,7 @@ export const EditUser: React.FC<Props> = ({
 
         <Modal>
             <div className="modal__header">
-                <div className="form__title">Fill in the fields you want to change</div>
+                <Title>Fill in the fields you want to change</Title>
                 <div className="modal__close" onClick={onClose}>
                     <CloseIcon />
                 </div>

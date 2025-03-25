@@ -8,6 +8,7 @@ import { Input } from '../input';
 import { Button } from '../button';
 import './style.css'
 import { useNavigate } from 'react-router-dom';
+import { Title } from '../title';
 
 
 
@@ -84,7 +85,7 @@ export const CreatePost = (
 
     return (
         <div className='form__post'>
-            <div className="form__title">Fill out the fields in the form below</div>
+            <Title>Fill out the fields in the form below</Title>
             <form className='form' onSubmit={onSubmit}>
                 <Input
                     control={control}
